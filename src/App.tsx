@@ -1,7 +1,9 @@
+import Text from "./components/text/Text";
+
 function App() {
   return (
     <>
-      <h1>Project Started</h1>
+      <Text variant='normal'>Project Started</Text>
     </>
   );
 }
