@@ -16,8 +16,8 @@ type Story = StoryObj<typeof meta>;
 
 export const XLarge: Story = {
   args: {
-    children: "Normal Text",
-    variant: "normal",
+    children: "XLarge Text",
+    variant: "xLarge",
   },
 };
 

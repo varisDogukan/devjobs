@@ -13,7 +13,7 @@ export const theme = {
   light: {
     primaryColor: "#6E8098",
     primaryBy: "#F4F6F8",
-    secondaryColor: "19202D",
+    secondaryColor: "#19202D",
     secondaryBg: "#FFFFFF",
     tertiaryColor: "#5964E0",
     buttonThemeBg: "#EFF0FC",
@@ -31,10 +31,11 @@ const GlobalStyles = createGlobalStyle`
     --button-theme-bg: ${({ theme }) => theme.buttonThemeBg};
     --button-theme-bg-hover: ${({ theme }) => theme.buttonThemeBgHover};
 
-    --violet-100: '#D5D8F7';
-    --violet-300: '#939BF4';
-    --violet-700: '#5964E0';
-    --grey: '#979797';
+    --white: #FFFFFF;
+    --violet-100: #D5D8F7;
+    --violet-300: #939BF4;
+    --violet-700: #5964E0;
+    --grey: #979797;
   }
 
   *, *::before, *::after { 

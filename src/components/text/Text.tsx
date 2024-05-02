@@ -14,37 +14,37 @@ const variants = {
     size: "28px",
     lineHeight: "34px",
     fontWeight: "bold",
-    color: "var(--secondary-color)",
+    color: "--secondary-color",
   },
   large: {
     size: "24px",
     lineHeight: "29px",
     fontWeight: "bold",
-    color: "var(--secondary-color)",
+    color: "--secondary-color",
   },
   medium: {
     size: "20px",
     lineHeight: "24px",
     fontWeight: "bold",
-    color: "var(--secondary-color)",
+    color: "--secondary-color",
   },
   normal: {
     size: "16px",
     lineHeight: "26px",
     fontWeight: "regular",
-    color: "var(--primary-color)",
+    color: "--primary-color",
   },
   normalGrey: {
     size: "16px",
     lineHeight: "26px",
     fontWeight: "regular",
-    color: "var(--grey)",
+    color: "--grey",
   },
   small: {
     size: "14px",
     lineHeight: "18px",
     fontWeight: "bold",
-    color: "var(--violet-700)",
+    color: "--violet-700",
   },
 };
 
@@ -56,6 +56,6 @@ const TextWrapper = styled.p<textType>`
   font-size: ${({ variant }) => variants[variant].size};
   font-weight: ${({ variant }) => variants[variant].fontWeight};
   line-height: ${({ variant }) => variants[variant].lineHeight};
-  color: ${({ variant }) => variants[variant].color};
+  color: var(${({ variant }) => variants[variant].color});
   font-family: "Kumbh Sans", sans-serif;
 `;
