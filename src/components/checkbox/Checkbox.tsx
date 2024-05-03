@@ -24,6 +24,9 @@ export default function Checkbox({
   );
 }
 
+/*
+=========== STYLES =================
+*/
 const CheckboxWrapper = styled.label`
   display: flex;
   align-items: center;
@@ -49,6 +52,8 @@ const CheckboxWrapper = styled.label`
 
   p {
     user-select: none;
+    color: var(--secondary-color);
+    font-weight: bold;
   }
 
   input:checked + span {

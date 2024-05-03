@@ -1,11 +1,9 @@
-import Checkbox from "./components/checkbox/Checkbox";
+import Input from "./components/input/Input";
 
 function App() {
   return (
     <>
-      <Checkbox id='checkbox' checked={false}>
-        Checkbox
-      </Checkbox>
+      <Input name='location' placeholder='Saygılar' icon='location' />
     </>
   );
 }

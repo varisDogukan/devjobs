@@ -10,8 +10,6 @@ interface ThemeProviderProps {
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const { themeTitle } = useStore();
 
-  console.log(themeTitle);
-
   return (
     <Theme theme={theme[themeTitle]}>
       {children}
