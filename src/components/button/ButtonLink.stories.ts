@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ButtonLink from "./ButtonLink";
 
 const meta = {
-  title: "ButtonLink",
+  title: "Components/ButtonLink",
   component: ButtonLink,
   parameters: {
     layout: "centered",
@@ -20,6 +20,13 @@ export const Button: Story = {
     type: "button",
     variant: "normal",
     width: "141px",
+  },
+};
+
+export const IconButton: Story = {
+  args: {
+    type: "button",
+    variant: "icon",
   },
 };
 

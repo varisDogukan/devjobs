@@ -1,13 +1,14 @@
 import styled, { css } from "styled-components";
 
-import mediaQuery from "../../styles/mediaQuery";
+import mediaQuery from "@/styles/mediaQuery";
+import icon from "@/assets/magnifying_glass.svg";
 
 interface ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   url?: string;
   type: "link" | "button";
   variant: "normal" | "icon";
-  width: string;
+  width?: string;
   full?: boolean;
   theme?: boolean;
 }
@@ -18,7 +19,7 @@ export default function ButtonLink({
   type,
   variant,
   full = false,
-  width,
+  width = "max-content",
   theme = false,
 }: ButtonProps) {
   if (type === "link") {
@@ -36,7 +37,9 @@ export default function ButtonLink({
     );
   } else {
     return variant === "icon" ? (
-      <></>
+      <ButtonWrapper width={width} full={full}>
+        <img src={icon} />
+      </ButtonWrapper>
     ) : (
       <ButtonWrapper width={width} full={full}>
         {children}
@@ -45,6 +48,9 @@ export default function ButtonLink({
   }
 }
 
+/*
+=========== STYLES =================
+*/
 type WrapperProps = {
   width: string;
   full: boolean;
@@ -56,6 +62,7 @@ const sharedStyle = css`
   display: grid;
   place-content: center;
   border-radius: 5px;
+  padding: 0 14px;
 
   &:hover {
     background-color: var(--violet-300);
@@ -89,7 +96,7 @@ const LinkWrapper = styled.a<WrapperProps>`
   &:hover {
     background: var(
       ${({ theme }) =>
-        theme === true ? "--button-theme-bg-hover" : "--violet-700"}
+        theme === true ? "--button-theme-bg-hover" : "--violet-300"}
     );
   }
 

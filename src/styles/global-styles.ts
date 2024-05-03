@@ -9,6 +9,7 @@ export const theme = {
     tertiaryColor: "#FFFFFF",
     buttonThemeBg: "#303642",
     buttonThemeBgHover: "#696E76",
+    checkboxThemeBg: "#303742",
   },
   light: {
     primaryColor: "#6E8098",
@@ -18,6 +19,7 @@ export const theme = {
     tertiaryColor: "#5964E0",
     buttonThemeBg: "#EFF0FC",
     buttonThemeBgHover: "#C5C9F4",
+    checkboxThemeBg: "#E8E8EA",
   },
 };
 
@@ -35,7 +37,11 @@ const GlobalStyles = createGlobalStyle`
     --violet-100: #D5D8F7;
     --violet-300: #939BF4;
     --violet-700: #5964E0;
-    --grey: #979797;
+    --grey: #6E8098;
+
+    --checkbox-theme-bg: ${({ theme }) => theme.checkboxThemeBg};;
+    --checkbox-hover: var(--violet-100);
+    --checkbox-active: var(--violet-700);
   }
 
   *, *::before, *::after { 

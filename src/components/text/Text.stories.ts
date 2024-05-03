@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Text from "./Text";
 
 const meta = {
-  title: "Text",
+  title: "Components/Text",
   component: Text,
   parameters: {
     layout: "centered",
@@ -39,6 +39,13 @@ export const Normal: Story = {
   args: {
     children: "Normal Text",
     variant: "normal",
+  },
+};
+
+export const WithoutThemeNormal: Story = {
+  args: {
+    children: "Without Theme Normal",
+    variant: "withoutThemeNormal",
   },
 };
 

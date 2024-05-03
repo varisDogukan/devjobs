@@ -2,13 +2,22 @@ import styled from "styled-components";
 
 interface TextProps {
   children: string;
-  variant: "xLarge" | "large" | "medium" | "normal" | "small";
+  variant:
+    | "xLarge"
+    | "large"
+    | "medium"
+    | "normal"
+    | "withoutThemeNormal"
+    | "small";
 }
 
 export default function Text({ children, variant = "normal" }: TextProps) {
   return <TextWrapper variant={variant}>{children}</TextWrapper>;
 }
 
+/*
+=========== STYLES =================
+*/
 const variants = {
   xLarge: {
     size: "28px",
@@ -34,7 +43,7 @@ const variants = {
     fontWeight: "regular",
     color: "--primary-color",
   },
-  normalGrey: {
+  withoutThemeNormal: {
     size: "16px",
     lineHeight: "26px",
     fontWeight: "regular",
@@ -49,7 +58,13 @@ const variants = {
 };
 
 type textType = {
-  variant: "xLarge" | "large" | "medium" | "normal" | "small";
+  variant:
+    | "xLarge"
+    | "large"
+    | "medium"
+    | "normal"
+    | "withoutThemeNormal"
+    | "small";
 };
 
 const TextWrapper = styled.p<textType>`

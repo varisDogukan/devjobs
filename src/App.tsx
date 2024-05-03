@@ -1,13 +1,11 @@
-import ButtonLink from "./components/button/ButtonLink";
-import Text from "./components/text/Text";
+import Checkbox from "./components/checkbox/Checkbox";
 
 function App() {
   return (
     <>
-      <Text variant='normal'>Project Started</Text>
-      <ButtonLink type='button' variant='normal' width='141px'>
-        Button
-      </ButtonLink>
+      <Checkbox id='checkbox' checked={false}>
+        Checkbox
+      </Checkbox>
     </>
   );
 }
