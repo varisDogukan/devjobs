@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface TextProps {
-  children: string;
+  children: React.ReactNode;
   variant:
     | "xLarge"
     | "large"

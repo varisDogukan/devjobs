@@ -58,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;  
     -webkit-font-smoothing: antialiased; 
     font-family: "Kumbh Sans", sans-serif;
+    background-color: #F4F6F8;
   }
 
   img, picture, video, canvas, svg {  
