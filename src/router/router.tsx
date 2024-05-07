@@ -1,3 +1,4 @@
+import Text from "@/components/text/Text";
 import HomeLayout from "@/pages/HomeLayout";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>Job List</div>,
+        element: <Text variant='xLarge'>Job List</Text>,
       },
       {
         path: "job/:id",

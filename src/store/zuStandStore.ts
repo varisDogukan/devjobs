@@ -1,21 +1,20 @@
+// zuStandStore.ts
 import { create } from "zustand";
 
-type Store = {
+export type Store = {
   themeTitle: "dark" | "light";
   toggleTheme: () => void;
+  resetStore: () => void; // Reset store to initial state
 };
 
-function checkStorage() {
-  if (
-    typeof window !== "undefined" &&
-    (localStorage.themeTitle === "dark" ||
-      (!("themeTitle" in localStorage) &&
-        window.matchMedia("(prefers-color-schema: dark)").matches))
-  ) {
-    return "dark";
-  } else {
-    return "light";
+function checkStorage(): "dark" | "light" {
+  const storedTheme = localStorage.getItem("themeTitle");
+
+  if (storedTheme) {
+    return storedTheme as "dark" | "light";
   }
+
+  return "dark";
 }
 
 const useStore = create<Store>((set) => ({
@@ -23,10 +22,10 @@ const useStore = create<Store>((set) => ({
   toggleTheme: () =>
     set((state) => {
       const themeTitle = state.themeTitle === "dark" ? "light" : "dark";
-      localStorage.themeTitle = themeTitle;
-
+      localStorage.setItem("themeTitle", themeTitle);
       return { themeTitle };
     }),
+  resetStore: () => set(() => ({ themeTitle: "dark" })),
 }));
 
 export default useStore;

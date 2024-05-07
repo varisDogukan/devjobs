@@ -2,20 +2,16 @@ import styled from "styled-components";
 
 import sun from "@/assets/sun.svg";
 import moon from "@/assets/moon.svg";
-import React from "react";
+import useStore from "@/store/zuStandStore";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = React.useState("light");
+  const { themeTitle, toggleTheme } = useStore();
 
   return (
-    <ThemeToggleWrapper
-      onClick={() => {
-        setTheme(theme === "light" ? "dark" : "light");
-      }}
-    >
+    <ThemeToggleWrapper onClick={toggleTheme}>
       <img src={sun} alt='sun icon' />
 
-      <ToggleWrapper theme={theme} />
+      <ToggleWrapper theme={themeTitle} />
 
       <img src={moon} alt='moon icon' />
     </ThemeToggleWrapper>

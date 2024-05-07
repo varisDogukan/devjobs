@@ -1,3 +1,4 @@
+import mediaQuery from "@/styles/mediaQuery";
 import { createGlobalStyle } from "styled-components";
 
 export const theme = {
@@ -13,7 +14,7 @@ export const theme = {
   },
   light: {
     primaryColor: "#6E8098",
-    primaryBy: "#F4F6F8",
+    primaryBg: "#F4F6F8",
     secondaryColor: "#19202D",
     secondaryBg: "#FFFFFF",
     tertiaryColor: "#5964E0",
@@ -42,6 +43,8 @@ const GlobalStyles = createGlobalStyle`
     --checkbox-theme-bg: ${({ theme }) => theme.checkboxThemeBg};;
     --checkbox-hover: var(--violet-100);
     --checkbox-active: var(--violet-700);
+
+    --max-width: 1110px;
   }
 
   *, *::before, *::after { 
@@ -58,7 +61,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;  
     -webkit-font-smoothing: antialiased; 
     font-family: "Kumbh Sans", sans-serif;
-    background-color: #F4F6F8;
+    background-color: var(--primary-bg);
   }
 
   img, picture, video, canvas, svg {  
@@ -81,6 +84,20 @@ const GlobalStyles = createGlobalStyle`
   p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 
   #root { isolation: isolate; }
+
+  .container {
+    max-width: var(--max-width);
+    padding: 0 24px;
+    margin: 0 auto;
+
+    @media ${mediaQuery.tablet} {
+      padding: 0 40px;
+    }
+
+    @media ${mediaQuery.desktop} {
+      padding: 0;
+    }
+  }
 `;
 
 export default GlobalStyles;
