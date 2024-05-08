@@ -1,5 +1,4 @@
-import Text from "@/components/text/Text";
-import HomeLayout from "@/pages/HomeLayout";
+import { Landing, HomeLayout } from "@/pages";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -9,7 +8,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Text variant='xLarge'>Job List</Text>,
+        element: <Landing />,
       },
       {
         path: "job/:id",
