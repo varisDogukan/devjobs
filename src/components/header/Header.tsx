@@ -21,10 +21,12 @@ export default function Header() {
 
 const HeaderWrapper = styled.header`
   background-color: var(--violet-700);
+  overflow: hidden;
   padding: 32px 0 72px;
 
   @media ${mediaQuery.tablet} {
     padding: 42px 0 86px;
+    border-radius: 0 0 0 100px;
   }
 
   @media ${mediaQuery.desktop} {

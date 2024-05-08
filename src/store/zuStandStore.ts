@@ -1,4 +1,3 @@
-// zuStandStore.ts
 import { create } from "zustand";
 
 export type Store = {
