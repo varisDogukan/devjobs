@@ -20,6 +20,9 @@ export default function ThemeToggle() {
   );
 }
 
+/*
+=========== STYLES =================
+*/
 const ThemeToggleWrapper = styled.button`
   display: flex;
   align-items: center;
@@ -50,4 +53,8 @@ const ToggleItem = styled.span<ToggleItemProps>`
   border-radius: 50%;
   transition: all 0.2s linear;
   left: ${({ theme }) => (theme === "light" ? "5px" : "29px")};
+
+  ${ThemeToggleWrapper}:hover & {
+    background-color: var(--violet-300);
+  }
 `;

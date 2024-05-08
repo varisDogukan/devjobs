@@ -19,6 +19,9 @@ export default function Header() {
   );
 }
 
+/*
+=========== STYLES =================
+*/
 const HeaderWrapper = styled.header`
   background-color: var(--violet-700);
   overflow: hidden;

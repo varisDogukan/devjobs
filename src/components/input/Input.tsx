@@ -24,16 +24,20 @@ export default function Input({ icon, ...delegate }: InputProps) {
   );
 }
 
+/*
+=========== STYLES =================
+*/
 const InputWrapper = styled.div`
   display: flex;
+  height: 100%;
   align-items: center;
   gap: 16px;
-  padding: 24px;
+  padding: 0 24px;
 
   input {
     border: none;
-    background-color: var(--secondaryBg);
-    color: var(--secondaryColor);
+    background-color: var(--secondary-bg);
+    color: var(--secondary-color);
     width: 100%;
     outline: none;
     overflow: hidden;
@@ -41,6 +45,7 @@ const InputWrapper = styled.div`
     white-space: nowrap;
 
     &::placeholder {
+      color: var(--secondary-color);
       opacity: 0.5;
     }
   }

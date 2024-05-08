@@ -20,6 +20,7 @@ export const Button: Story = {
     type: "button",
     variant: "normal",
     width: "141px",
+    size: "custom",
   },
 };
 
@@ -27,6 +28,8 @@ export const IconButton: Story = {
   args: {
     type: "button",
     variant: "icon",
+    size: "full",
+    width: "max-contanet",
   },
 };
 
@@ -36,6 +39,7 @@ export const Link: Story = {
     type: "link",
     variant: "normal",
     width: "141px",
+    size: "custom",
   },
 };
 
@@ -46,5 +50,6 @@ export const LinkTheme: Story = {
     variant: "normal",
     width: "141px",
     theme: true,
+    size: "custom",
   },
 };

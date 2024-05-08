@@ -35,6 +35,9 @@ export default function Card({
   );
 }
 
+/*
+=========== STYLES =================
+*/
 const CardWrapper = styled.article`
   position: relative;
   width: max-content;

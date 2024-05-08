@@ -11,6 +11,7 @@ export const theme = {
     buttonThemeBg: "#303642",
     buttonThemeBgHover: "#696E76",
     checkboxThemeBg: "#303742",
+    lineBg: "#2A3442",
   },
   light: {
     primaryColor: "#6E8098",
@@ -21,6 +22,7 @@ export const theme = {
     buttonThemeBg: "#EFF0FC",
     buttonThemeBgHover: "#C5C9F4",
     checkboxThemeBg: "#E8E8EA",
+    lineBg: "#e2e6ea",
   },
 };
 
@@ -33,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
     --tertiary-color: ${({ theme }) => theme.tertiaryColor};
     --button-theme-bg: ${({ theme }) => theme.buttonThemeBg};
     --button-theme-bg-hover: ${({ theme }) => theme.buttonThemeBgHover};
+    --line-bg:${({ theme }) => theme.lineBg};
 
     --white: #FFFFFF;
     --violet-100: #D5D8F7;
@@ -79,7 +82,7 @@ const GlobalStyles = createGlobalStyle`
 
   input, button, textarea, select { font: inherit; }
 
-  button { cursor: pointer; border: none; }
+  button { cursor: pointer; border: none; user-select: none }
 
   p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 

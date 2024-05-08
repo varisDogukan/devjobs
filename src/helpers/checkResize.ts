@@ -1,8 +1,9 @@
 export default function checkResize(
-  setBiggerThanMobile: React.Dispatch<React.SetStateAction<boolean>>
+  setBiggerThanMobile: React.Dispatch<React.SetStateAction<boolean>>,
+  size: number
 ) {
   const handleResize = () => {
-    if (window.innerWidth >= 768) {
+    if (window.innerWidth >= size) {
       setBiggerThanMobile(true);
     } else {
       setBiggerThanMobile(false);

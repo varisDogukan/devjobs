@@ -1,32 +1,49 @@
 import styled, { css } from "styled-components";
 
+import useStore from "@/store/zuStandStore";
 import mediaQuery from "@/styles/mediaQuery";
-import icon from "@/assets/magnifying_glass.svg";
+import magnifyIcon from "@/assets/magnifying_glass.svg";
+import filterDarkIcon from "@/assets/filter-black.svg";
+import filterLightIcon from "@/assets/filter-light.svg";
 
 interface ButtonProps {
   children?: React.ReactNode;
   url?: string;
   type: "link" | "button";
   variant: "normal" | "icon";
+  formType?: "button" | "submit";
   width?: string;
-  full?: boolean;
+  size: "full" | "custom";
   theme?: boolean;
+  icontype?: "filter" | "magnify";
+  onClick?: () => void;
 }
+
+const checkTheme = (theme: string) => {
+  if (theme === "dark") return filterDarkIcon;
+
+  return filterLightIcon;
+};
 
 export default function ButtonLink({
   children,
   url,
   type,
   variant,
-  full = false,
+  size,
   width = "max-content",
   theme = false,
+  formType = undefined,
+  icontype = "magnify",
+  onClick,
 }: ButtonProps) {
+  const { themeTitle } = useStore();
+
   if (type === "link") {
     return (
       <LinkWrapper
         width={width}
-        full={full}
+        size={size}
         theme={theme}
         href={url}
         target='_blank'
@@ -36,15 +53,34 @@ export default function ButtonLink({
       </LinkWrapper>
     );
   } else {
-    return variant === "icon" ? (
-      <ButtonWrapper width={width} full={full}>
-        <img src={icon} />
-      </ButtonWrapper>
-    ) : (
-      <ButtonWrapper width={width} full={full}>
-        {children}
-      </ButtonWrapper>
-    );
+    if (variant === "icon") {
+      return icontype === "magnify" ? (
+        <ButtonWrapper width={width} size={size} type={formType}>
+          <img src={magnifyIcon} />
+        </ButtonWrapper>
+      ) : (
+        <ButtonWrapper
+          width={width}
+          size={size}
+          type={formType}
+          icontype={icontype}
+          onClick={onClick}
+        >
+          <img src={checkTheme(themeTitle)} />
+        </ButtonWrapper>
+      );
+    } else {
+      return (
+        <ButtonWrapper
+          width={width}
+          size={size}
+          type={formType}
+          icontype={icontype}
+        >
+          {children}
+        </ButtonWrapper>
+      );
+    }
   }
 }
 
@@ -53,8 +89,9 @@ export default function ButtonLink({
 */
 type WrapperProps = {
   width: string;
-  full: boolean;
+  size: "full" | "custom";
   theme: boolean;
+  icontype?: "filter" | "magnify";
 };
 
 const sharedStyle = css`
@@ -63,6 +100,7 @@ const sharedStyle = css`
   place-content: center;
   border-radius: 5px;
   padding: 0 14px;
+  font-weight: bold;
 
   &:hover {
     background-color: var(--violet-300);
@@ -72,15 +110,17 @@ const sharedStyle = css`
 const ButtonWrapper = styled.button<WrapperProps>`
   ${sharedStyle}
 
-  background: var(--violet-700);
+  background-color: ${({ icontype }) =>
+    icontype === "filter" ? "transparent" : "var(--violet-700)"};
   color: var(--white);
 
   &:hover {
-    background: var(--button-theme-bg-hover);
+    background: ${({ icontype }) =>
+      icontype === "filter" ? "var(--violet-100)" : "var(--violet-300)"};
   }
 
   @media ${mediaQuery.mobile} {
-    width: ${({ full, width }) => (full ? "100%" : width)};
+    width: ${({ size, width }) => (size === "full" ? "100%" : width)};
   }
 `;
 
@@ -101,6 +141,6 @@ const LinkWrapper = styled.a<WrapperProps>`
   }
 
   @media ${mediaQuery.mobile} {
-    width: ${({ full, width }) => (full ? "100%" : width)};
+    width: ${({ size, width }) => (size === "full" ? "100%" : width)};
   }
 `;
