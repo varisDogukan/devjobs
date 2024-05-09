@@ -1,6 +1,7 @@
 import React from "react";
-import checkResize from "@/helpers/checkResize";
 import styled from "styled-components";
+
+import checkResize from "@/helpers/checkResize";
 import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import ButtonLink from "../button/ButtonLink";
@@ -219,7 +220,7 @@ const ModalWrapper = styled.div`
     flex-direction: column;
     border-radius: 6px;
     height: 217px;
-    background-color: var(--white);
+    background-color: var(--secondary-bg);
 
     & > div:first-child {
       border-bottom: 1px solid var(--line-bg);
