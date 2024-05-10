@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { readFileSync } from "fs";
 import path from "path";
+import cors from "cors";
 
 import { JobType } from "./interfaces";
 import { getJobs, getSingleJob } from "./controller";
@@ -9,6 +10,9 @@ import { getJobs, getSingleJob } from "./controller";
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
+
 const port = process.env.PORT || 3000;
 
 const dataFilePath = path.join(__dirname, "data.json");
