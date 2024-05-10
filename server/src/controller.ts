@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { jobsData } from ".";
+import { jobsData } from "./api";
 import { filterJobs } from "./helper";
 import { JobType } from "./interfaces";
 
