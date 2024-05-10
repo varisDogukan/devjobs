@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 
-import { jobsData } from "./api";
 import { filterJobs } from "./helper";
 import { JobType } from "./interfaces";
+import { jobsData } from "./app";
 
 export function getJobs(req: Request, res: Response) {
   const search = req.query.search as string | undefined;
