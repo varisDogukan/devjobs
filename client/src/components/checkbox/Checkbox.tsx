@@ -1,21 +1,17 @@
 import styled from "styled-components";
 
-import icon from "@/assets/tick.svg";
+import icon from "../../assets/tick.svg";
 
 interface CheckboxProps {
   children: string;
   id: string;
-  checked: boolean;
+  name: string;
 }
 
-export default function Checkbox({
-  children,
-  id,
-  checked = false,
-}: CheckboxProps) {
+export default function Checkbox({ children, ...delegate }: CheckboxProps) {
   return (
-    <CheckboxWrapper htmlFor={id}>
-      <input type='checkbox' id={id} defaultChecked={checked} />
+    <CheckboxWrapper htmlFor={delegate.id} role='fullTimeOnly'>
+      <input type='checkbox' {...delegate} />
       <span>
         <img src={icon} alt='' />
       </span>

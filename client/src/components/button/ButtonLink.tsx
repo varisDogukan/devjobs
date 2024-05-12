@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 
 import useStore from "@/store/zuStandStore";
 import mediaQuery from "@/styles/mediaQuery";
-import magnifyIcon from "@/assets/magnifying_glass.svg";
-import filterDarkIcon from "@/assets/filter-black.svg";
-import filterLightIcon from "@/assets/filter-light.svg";
+import magnifyIcon from "../../assets/magnifying_glass.svg";
+import filterDarkIcon from "../../assets/filter-black.svg";
+import filterLightIcon from "../../assets/filter-light.svg";
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -65,6 +65,7 @@ export default function ButtonLink({
           type={formType}
           icontype={icontype}
           onClick={onClick}
+          role='filter'
         >
           <img src={checkTheme(themeTitle)} />
         </ButtonWrapper>

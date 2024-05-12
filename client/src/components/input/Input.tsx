@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import magnify from "@/assets/magnifying_glass_blue.svg";
-import location from "@/assets/location.svg";
+import magnify from "../../assets/magnifying_glass_blue.svg";
+import location from "../../assets/location.svg";
 
 interface InputProps {
   icon?: "magnify" | "location" | "without";
@@ -17,7 +17,7 @@ export default function Input({ icon, ...delegate }: InputProps) {
   };
 
   return (
-    <InputWrapper>
+    <InputWrapper role={delegate.name as string}>
       {checkIcon()}
       <input type='text' {...delegate} />
     </InputWrapper>

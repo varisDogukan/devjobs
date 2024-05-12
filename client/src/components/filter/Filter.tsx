@@ -1,4 +1,13 @@
-import React from "react";
+import {
+  Dispatch,
+  FormEvent,
+  LegacyRef,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled from "styled-components";
 
 import checkResize from "@/helpers/checkResize";
@@ -7,44 +16,72 @@ import Checkbox from "../checkbox/Checkbox";
 import ButtonLink from "../button/ButtonLink";
 import mediaQuery from "@/styles/mediaQuery";
 import useOutsideClick from "@/helpers/useOutsideClick";
+import useStore from "@/store/zuStandStore";
+
+const getFormValues = (form: EventTarget & HTMLFormElement) => {
+  const formData = new FormData(form);
+
+  const data = Object.fromEntries(formData.entries());
+
+  return data;
+};
 
 export default function Filter() {
-  const [biggerThanMobile, setBiggerThanMobile] = React.useState(false);
-  const [biggerThanTablet, setBiggerThanTablet] = React.useState(false);
+  const [biggerThanMobile, setBiggerThanMobile] = useState(false);
+  const [biggerThanTablet, setBiggerThanTablet] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const { setFormInfo } = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     checkResize(setBiggerThanMobile, 768);
     checkResize(setBiggerThanTablet, 1440);
   }, []);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const data = getFormValues(event.currentTarget);
+
+    const fullTimeOnly = data.fullTimeOnly === "on" ? true : false;
+
+    setFormInfo({
+      search: data.search as string,
+      location: data.location as string,
+      fullTimeOnly: fullTimeOnly,
+    });
+
+    setShowModal(false);
+    event.currentTarget.reset();
   };
 
-  const checkDevice = (biggerThanMobile: boolean): React.ReactNode => {
+  const checkDevice = (biggerThanMobile: boolean): ReactNode => {
     if (biggerThanMobile) {
       return <TabletAndDesktopContainer biggerThanTablet={biggerThanTablet} />;
     }
 
-    return <MobileContainer />;
+    return (
+      <MobileContainer showModal={showModal} setShowModal={setShowModal} />
+    );
   };
 
   return (
-    <FilterWrapper onSubmit={handleSubmit}>
+    <FilterWrapper onSubmit={handleSubmit} role='form'>
       {checkDevice(biggerThanMobile)}
     </FilterWrapper>
   );
 }
 
+type TabletAndDesktopContainerType = {
+  biggerThanTablet: boolean;
+};
+
 function TabletAndDesktopContainer({
   biggerThanTablet,
-}: {
-  biggerThanTablet: boolean;
-}) {
+}: TabletAndDesktopContainerType) {
   return (
     <TabletContainerWrapper>
       <Input
-        name='title'
+        name='search'
         placeholder='Filter by title, companies, expertise…'
         icon='magnify'
       />
@@ -56,7 +93,7 @@ function TabletAndDesktopContainer({
       />
 
       <div className='checkbox-container'>
-        <Checkbox checked={false} id='type'>
+        <Checkbox id='type' name='fullTimeOnly'>
           {biggerThanTablet ? "Full Time Only" : "Full Time"}
         </Checkbox>
 
@@ -74,9 +111,13 @@ function TabletAndDesktopContainer({
   );
 }
 
-function MobileContainer() {
-  const [showModal, setShowModal] = React.useState(false);
-  const ref = React.useRef(null);
+type MobileContainerType = {
+  showModal: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+};
+
+function MobileContainer({ showModal, setShowModal }: MobileContainerType) {
+  const ref = useRef(null);
 
   const callback = () => {
     setShowModal(false);
@@ -87,7 +128,7 @@ function MobileContainer() {
   return (
     <MobileContainerWrapper>
       <Input
-        name='title'
+        name='search'
         placeholder='Filter by title, companies, expertise…'
         icon='magnify'
       />
@@ -116,7 +157,11 @@ function MobileContainer() {
   );
 }
 
-function Modal({ modalRef }: { modalRef: React.LegacyRef<HTMLDivElement> }) {
+type ModalType = {
+  modalRef: LegacyRef<HTMLDivElement>;
+};
+
+function Modal({ modalRef }: ModalType) {
   return (
     <ModalWrapper>
       <div className='modal-container' ref={modalRef}>
@@ -127,7 +172,7 @@ function Modal({ modalRef }: { modalRef: React.LegacyRef<HTMLDivElement> }) {
         />
 
         <div>
-          <Checkbox checked={false} id='type'>
+          <Checkbox id='type' name='fullTimeOnly'>
             Full Time Only
           </Checkbox>
 

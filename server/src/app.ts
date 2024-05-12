@@ -4,7 +4,7 @@ import { readFileSync } from "fs";
 import path from "path";
 import cors from "cors";
 
-import { JobType } from "./interfaces";
+import { JobType } from "./types";
 import { getJobs, getSingleJob } from "./controller";
 
 dotenv.config();

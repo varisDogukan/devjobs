@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 
 type Props = {
   ref: React.RefObject<HTMLElement>;
@@ -6,7 +6,7 @@ type Props = {
 };
 
 export default function useOutsideClick({ ref, callback }: Props) {
-  React.useEffect(() => {
+  useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();

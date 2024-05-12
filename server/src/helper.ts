@@ -2,7 +2,7 @@ export function filterJobs(
   jobs: any[],
   search: string | undefined,
   location: string | undefined,
-  fullTimeOnly: boolean | undefined
+  fullTimeOnly: boolean
 ) {
   return jobs.filter((job) => {
     const matchesSearch = search

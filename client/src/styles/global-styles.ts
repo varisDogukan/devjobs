@@ -94,7 +94,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 auto;
 
     @media ${mediaQuery.tablet} {
-      padding: 0 40px;
+      padding: 0 39px;
     }
 
     @media ${mediaQuery.desktop} {

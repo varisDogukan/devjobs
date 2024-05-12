@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import { filterJobs } from "./helper";
-import { JobType } from "./interfaces";
+import { JobType } from "./types";
 import { jobsData } from "./app";
 
 export function getJobs(req: Request, res: Response) {
