@@ -1,23 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { FormType, JobType } from "@/types";
+import { FormType, FormTypeWithoutCount, JobType } from "@/types";
 import { axiosInstance } from "@/axiosInstance";
 
 async function getDevJobs(props: FormType): Promise<JobType[]> {
-  const { search, location, fullTimeOnly } = props;
+  const { search, location, fullTimeOnly, count } = props;
 
   const { data } = await axiosInstance.get(
-    `/devjobs?search=${search ? search : ""}&location=${location ? location : ""}&fullTimeOnly=${fullTimeOnly}`
+    `/devjobs?search=${search}&location=${location}&fullTimeOnly=${fullTimeOnly}&count=${count}`
   );
 
-  return data;
+  return data as JobType[];
 }
 
-export function useGetDevJobs(props: FormType) {
-  const { search, location, fullTimeOnly } = props;
+export function useGetDevJobs(formInfo: FormTypeWithoutCount, count: number) {
+  const { search, location, fullTimeOnly } = formInfo;
 
   return useQuery({
-    queryKey: ["devJobs", search, location, fullTimeOnly],
-    queryFn: () => getDevJobs({ search, location, fullTimeOnly }),
+    queryKey: ["devJobs", search, location, fullTimeOnly, count],
+    queryFn: () => getDevJobs({ search, location, fullTimeOnly, count }),
   });
 }

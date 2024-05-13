@@ -1,4 +1,4 @@
-import { FormType } from "@/types";
+import { FormTypeWithoutCount } from "@/types";
 import { create } from "zustand";
 
 export type Store = {
@@ -6,11 +6,11 @@ export type Store = {
   toggleTheme: () => void;
   resetStore: () => void; // Reset store to initial state
 
-  formInfo: FormType;
-  setFormInfo: (formInfo: FormType) => void;
+  formInfo: FormTypeWithoutCount;
+  setFormInfo: (formInfo: FormTypeWithoutCount) => void;
 };
 
-const initialState: FormType = {
+const initialState: FormTypeWithoutCount = {
   search: "",
   location: "",
   fullTimeOnly: false,

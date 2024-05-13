@@ -33,4 +33,7 @@ export interface FormType {
   search: string;
   location: string;
   fullTimeOnly: boolean;
+  count: number;
 }
+
+export type FormTypeWithoutCount = Omit<FormType, "count">;

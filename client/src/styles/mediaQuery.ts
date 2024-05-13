@@ -1,5 +1,5 @@
 const mediaQuery = {
-  mobile: "(min-width: 325px)",
+  mobile: "(min-width: 375px)",
   tablet: "(min-width: 768px)",
   desktop: "(min-width: 1440px)",
 };

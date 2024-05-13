@@ -11,7 +11,7 @@ interface ButtonProps {
   url?: string;
   type: "link" | "button";
   variant: "normal" | "icon";
-  formType?: "button" | "submit";
+  formType: "button" | "submit";
   width?: string;
   size: "full" | "custom";
   theme?: boolean;
@@ -33,7 +33,7 @@ export default function ButtonLink({
   size,
   width = "max-content",
   theme = false,
-  formType = undefined,
+  formType = "button",
   icontype = "magnify",
   onClick,
 }: ButtonProps) {
@@ -55,7 +55,13 @@ export default function ButtonLink({
   } else {
     if (variant === "icon") {
       return icontype === "magnify" ? (
-        <ButtonWrapper width={width} size={size} type={formType}>
+        <ButtonWrapper
+          width={width}
+          size={size}
+          type={formType}
+          icontype={icontype}
+          onClick={onClick}
+        >
           <img src={magnifyIcon} />
         </ButtonWrapper>
       ) : (
@@ -64,8 +70,8 @@ export default function ButtonLink({
           size={size}
           type={formType}
           icontype={icontype}
-          onClick={onClick}
           role='filter'
+          onClick={onClick}
         >
           <img src={checkTheme(themeTitle)} />
         </ButtonWrapper>
@@ -77,6 +83,7 @@ export default function ButtonLink({
           size={size}
           type={formType}
           icontype={icontype}
+          onClick={onClick}
         >
           {children}
         </ButtonWrapper>

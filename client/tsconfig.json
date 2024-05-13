@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "matchMedia.mock.ts", "settings"],
+  "include": ["src", "settings"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

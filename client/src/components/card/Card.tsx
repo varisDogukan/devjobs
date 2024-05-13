@@ -25,7 +25,7 @@ export default function Card({
   id,
 }: CardProps) {
   return (
-    <CardWrapper logoBackground={logoBackground}>
+    <CardWrapper logobackground={logoBackground}>
       <div className='img-container'>
         <img src={logo} alt='company logo' />
       </div>
@@ -48,14 +48,13 @@ export default function Card({
 =========== STYLES =================
 */
 type CardType = {
-  logoBackground: string;
+  logobackground: string;
 };
 
 const CardWrapper = styled.article<CardType>`
   position: relative;
   padding: 49px 32px 32px;
   background-color: #fff;
-  margin-top: 100px;
   border-radius: 6px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   background-color: var(--secondary-bg);
@@ -83,7 +82,7 @@ const CardWrapper = styled.article<CardType>`
     place-content: center;
     top: 0;
     transform: translateY(-50%);
-    background-color: ${({ logoBackground }) => logoBackground};
+    background-color: ${({ logobackground }) => logobackground};
   }
 
   .card-link {

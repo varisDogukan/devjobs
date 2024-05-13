@@ -90,8 +90,12 @@ const GlobalStyles = createGlobalStyle`
 
   .container {
     max-width: var(--max-width);
-    padding: 0 24px;
+    padding: 0 10px;
     margin: 0 auto;
+
+    @media ${mediaQuery.mobile} {
+      padding: 0 24px;
+    }
 
     @media ${mediaQuery.tablet} {
       padding: 0 39px;
