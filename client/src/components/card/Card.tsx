@@ -10,7 +10,7 @@ interface CardProps {
   position: string;
   location: string;
   logo: string;
-  logoBackground: string;
+  logoBg: string;
   id: number;
 }
 
@@ -21,11 +21,11 @@ export default function Card({
   postedAt,
   position,
   contract,
-  logoBackground,
+  logoBg,
   id,
 }: CardProps) {
   return (
-    <CardWrapper logobackground={logoBackground}>
+    <CardWrapper $logoBg={logoBg}>
       <div className='img-container'>
         <img src={logo} alt='company logo' />
       </div>
@@ -34,7 +34,7 @@ export default function Card({
         <span>{postedAt}</span> ● <span role='contract'>{contract}</span>{" "}
       </Text>
       <Text variant='large'>
-        <Link to={`/${id}`} className='card-link'>
+        <Link to={`/devjobs/${id}`} className='card-link'>
           {position}
         </Link>
       </Text>
@@ -48,7 +48,7 @@ export default function Card({
 =========== STYLES =================
 */
 type CardType = {
-  logobackground: string;
+  $logoBg: string;
 };
 
 const CardWrapper = styled.article<CardType>`
@@ -82,7 +82,7 @@ const CardWrapper = styled.article<CardType>`
     place-content: center;
     top: 0;
     transform: translateY(-50%);
-    background-color: ${({ logobackground }) => logobackground};
+    background-color: ${({ $logoBg }) => $logoBg};
   }
 
   .card-link {

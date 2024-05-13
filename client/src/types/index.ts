@@ -2,7 +2,7 @@ export interface JobType {
   id: number;
   company: string;
   logo: string;
-  logoBackground: string;
+  logoBg: string;
   position: string;
   postedAt: string;
   contract: string;

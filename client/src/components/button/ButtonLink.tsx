@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 import useStore from "@/store/zuStandStore";
 import mediaQuery from "@/styles/mediaQuery";
@@ -10,12 +11,13 @@ interface ButtonProps {
   children?: React.ReactNode;
   url?: string;
   type: "link" | "button";
-  variant: "normal" | "icon";
-  formType: "button" | "submit";
+  variant?: "normal" | "icon";
+  formType?: "button" | "submit";
   width?: string;
   size: "full" | "custom";
   theme?: boolean;
   icontype?: "filter" | "magnify";
+  target?: "_blank" | "_self";
   onClick?: () => void;
 }
 
@@ -33,8 +35,9 @@ export default function ButtonLink({
   size,
   width = "max-content",
   theme = false,
-  formType = "button",
-  icontype = "magnify",
+  formType = undefined,
+  icontype,
+  target = "_self",
   onClick,
 }: ButtonProps) {
   const { themeTitle } = useStore();
@@ -45,8 +48,8 @@ export default function ButtonLink({
         width={width}
         size={size}
         theme={theme}
-        href={url}
-        target='_blank'
+        to={url as string}
+        target={target}
         rel='noopener noreferrer'
       >
         {children}
@@ -59,7 +62,7 @@ export default function ButtonLink({
           width={width}
           size={size}
           type={formType}
-          icontype={icontype}
+          $icontype={icontype}
           onClick={onClick}
         >
           <img src={magnifyIcon} />
@@ -69,7 +72,7 @@ export default function ButtonLink({
           width={width}
           size={size}
           type={formType}
-          icontype={icontype}
+          $icontype={icontype}
           role='filter'
           onClick={onClick}
         >
@@ -82,7 +85,6 @@ export default function ButtonLink({
           width={width}
           size={size}
           type={formType}
-          icontype={icontype}
           onClick={onClick}
         >
           {children}
@@ -99,7 +101,7 @@ type WrapperProps = {
   width: string;
   size: "full" | "custom";
   theme: boolean;
-  icontype?: "filter" | "magnify";
+  $icontype?: "filter" | "magnify";
 };
 
 const sharedStyle = css`
@@ -118,13 +120,13 @@ const sharedStyle = css`
 const ButtonWrapper = styled.button<WrapperProps>`
   ${sharedStyle}
 
-  background-color: ${({ icontype }) =>
-    icontype === "filter" ? "transparent" : "var(--violet-700)"};
+  background-color: ${({ $icontype }) =>
+    $icontype === "filter" ? "transparent" : "var(--violet-700)"};
   color: var(--white);
 
   &:hover {
-    background: ${({ icontype }) =>
-      icontype === "filter" ? "var(--violet-100)" : "var(--violet-300)"};
+    background: ${({ $icontype }) =>
+      $icontype === "filter" ? "var(--violet-100)" : "var(--violet-300)"};
   }
 
   @media ${mediaQuery.mobile} {
@@ -132,7 +134,7 @@ const ButtonWrapper = styled.button<WrapperProps>`
   }
 `;
 
-const LinkWrapper = styled.a<WrapperProps>`
+const LinkWrapper = styled(Link)<WrapperProps>`
   ${sharedStyle}
 
   background: var(${({ theme }) =>

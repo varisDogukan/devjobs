@@ -12,7 +12,7 @@ interface TextProps {
 }
 
 export default function Text({ children, variant = "normal" }: TextProps) {
-  return <TextWrapper variant={variant}>{children}</TextWrapper>;
+  return <TextWrapper $variant={variant}>{children}</TextWrapper>;
 }
 
 /*
@@ -58,7 +58,7 @@ const variants = {
 };
 
 type textType = {
-  variant:
+  $variant:
     | "xLarge"
     | "large"
     | "medium"
@@ -68,9 +68,9 @@ type textType = {
 };
 
 const TextWrapper = styled.p<textType>`
-  font-size: ${({ variant }) => variants[variant].size};
-  font-weight: ${({ variant }) => variants[variant].fontWeight};
-  line-height: ${({ variant }) => variants[variant].lineHeight};
-  color: var(${({ variant }) => variants[variant].color});
+  font-size: ${({ $variant }) => variants[$variant].size};
+  font-weight: ${({ $variant }) => variants[$variant].fontWeight};
+  line-height: ${({ $variant }) => variants[$variant].lineHeight};
+  color: var(${({ $variant }) => variants[$variant].color});
   font-family: "Kumbh Sans", sans-serif;
 `;
