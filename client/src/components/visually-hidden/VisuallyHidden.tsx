@@ -1,37 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
 export default function VisuallyHidden({ children }: { children: string }) {
-  const [forceShow, setForceShow] = React.useState(false);
-
-  React.useEffect(() => {
-    if (import.meta.env.DEV) {
-      const handleKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === "Alt") {
-          setForceShow(true);
-        }
-      };
-
-      const handleKeyUp = (ev: KeyboardEvent) => {
-        if (ev.key === "Alt") {
-          setForceShow(false);
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-      window.addEventListener("keyup", handleKeyUp);
-
-      return () => {
-        window.removeEventListener("keydown", handleKeyDown);
-        window.removeEventListener("keyup", handleKeyUp);
-      };
-    }
-  }, []);
-
-  if (forceShow) {
-    return children;
-  }
-
   return <Wrapper>{children}</Wrapper>;
 }
 
