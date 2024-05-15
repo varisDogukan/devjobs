@@ -7,6 +7,7 @@ import Card from "../card/Card";
 import { JobType } from "@/types";
 import mediaQuery from "@/styles/mediaQuery";
 import ButtonLink from "../button/ButtonLink";
+import Loader from "../loader/Loader";
 
 export default function CardContainer() {
   const { formInfo } = useStore();
@@ -15,7 +16,7 @@ export default function CardContainer() {
   const { data, isLoading, isError } = useGetDevJobs(formInfo, count);
 
   const checkData = () => {
-    if (isLoading) return <h1 role='loading'>Loading</h1>;
+    if (isLoading) return <Loader />;
     if (isError) return <h1 role='error'>Error</h1>;
 
     return data
@@ -24,7 +25,7 @@ export default function CardContainer() {
   };
 
   return (
-    <CardContainerWrapper>
+    <Wrapper>
       <div className='card-container'>{checkData()}</div>
 
       {data && data.length >= 5 && data.length % 12 === 0 && (
@@ -39,11 +40,14 @@ export default function CardContainer() {
           Load More
         </ButtonLink>
       )}
-    </CardContainerWrapper>
+    </Wrapper>
   );
 }
 
-const CardContainerWrapper = styled.div`
+/*
+=========== STYLES =================
+*/
+const Wrapper = styled.div`
   margin-top: 57px;
   margin-bottom: 104px;
 

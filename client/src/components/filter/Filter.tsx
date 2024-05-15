@@ -3,16 +3,8 @@ import styled from "styled-components";
 
 import checkResize from "@/helpers/checkResize";
 import useStore from "@/store/zuStandStore";
-import MobileContainer from "./MobileFilter";
-import TabletAndDesktopContainer from "./TabletFilter";
-
-const getFormValues = (form: EventTarget & HTMLFormElement) => {
-  const formData = new FormData(form);
-
-  const data = Object.fromEntries(formData.entries());
-
-  return data;
-};
+import Mobile from "./Mobile";
+import Tablet from "./Tablet";
 
 export default function Filter() {
   const [biggerThanMobile, setBiggerThanMobile] = useState(false);
@@ -44,25 +36,31 @@ export default function Filter() {
 
   const checkDevice = (biggerThanMobile: boolean): ReactNode => {
     if (biggerThanMobile) {
-      return <TabletAndDesktopContainer biggerThanTablet={biggerThanTablet} />;
+      return <Tablet biggerThanTablet={biggerThanTablet} />;
     }
 
-    return (
-      <MobileContainer showModal={showModal} setShowModal={setShowModal} />
-    );
+    return <Mobile showModal={showModal} setShowModal={setShowModal} />;
   };
 
   return (
-    <FilterWrapper onSubmit={handleSubmit} role='form'>
+    <Wrapper onSubmit={handleSubmit} role='form'>
       {checkDevice(biggerThanMobile)}
-    </FilterWrapper>
+    </Wrapper>
   );
 }
+
+const getFormValues = (form: EventTarget & HTMLFormElement) => {
+  const formData = new FormData(form);
+
+  const data = Object.fromEntries(formData.entries());
+
+  return data;
+};
 
 /*
 =========== STYLES =================
 */
-const FilterWrapper = styled.form`
+const Wrapper = styled.form`
   background-color: var(--secondary-bg);
   margin-top: -40px;
   border-radius: 6px;

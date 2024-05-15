@@ -5,15 +5,13 @@ import Checkbox from "../checkbox/Checkbox";
 import ButtonLink from "../button/ButtonLink";
 import mediaQuery from "@/styles/mediaQuery";
 
-type TabletAndDesktopContainerType = {
+type TabletProps = {
   biggerThanTablet: boolean;
 };
 
-export default function TabletAndDesktopContainer({
-  biggerThanTablet,
-}: TabletAndDesktopContainerType) {
+export default function Tablet({ biggerThanTablet }: TabletProps) {
   return (
-    <TabletContainerWrapper>
+    <Wrapper>
       <Input
         name='search'
         placeholder='Filter by title, companies, expertise…'
@@ -41,14 +39,14 @@ export default function TabletAndDesktopContainer({
           Search
         </ButtonLink>
       </div>
-    </TabletContainerWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const TabletContainerWrapper = styled.div`
+const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;

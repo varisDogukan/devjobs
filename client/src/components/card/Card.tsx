@@ -25,7 +25,7 @@ export default function Card({
   id,
 }: CardProps) {
   return (
-    <CardWrapper $logoBg={logoBg}>
+    <Wrapper $logoBg={logoBg}>
       <div className='img-container'>
         <img src={logo} alt='company logo' />
       </div>
@@ -33,25 +33,25 @@ export default function Card({
       <Text variant='withoutThemeNormal'>
         <span>{postedAt}</span> ● <span role='contract'>{contract}</span>{" "}
       </Text>
-      <Text variant='large'>
+      <Text variant='medium'>
         <Link to={`/devjobs/${id}`} className='card-link'>
           {position}
         </Link>
       </Text>
       <Text variant='withoutThemeNormal'>{company}</Text>
       <Text variant='small'>{location}</Text>
-    </CardWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-type CardType = {
+type StyleType = {
   $logoBg: string;
 };
 
-const CardWrapper = styled.article<CardType>`
+const Wrapper = styled.article<StyleType>`
   position: relative;
   padding: 49px 32px 32px;
   background-color: #fff;
@@ -59,13 +59,14 @@ const CardWrapper = styled.article<CardType>`
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
   background-color: var(--secondary-bg);
 
+  & > p:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
   & > p:first-of-type {
     display: flex;
     gap: 12px;
-  }
-
-  & > p:not(:last-child) {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   & > p:last-child {

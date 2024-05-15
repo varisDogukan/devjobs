@@ -7,7 +7,7 @@ import ThemeToggle from "../theme-toggle/ThemeToggle";
 
 export default function Header() {
   return (
-    <HeaderWrapper>
+    <Wrapper>
       <nav className='container'>
         <Link to={"/"} className='logo-container'>
           <img src={logo} alt='logo icon' />
@@ -15,14 +15,14 @@ export default function Header() {
 
         <ThemeToggle />
       </nav>
-    </HeaderWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const HeaderWrapper = styled.header`
+const Wrapper = styled.header`
   background-color: var(--violet-700);
   overflow: hidden;
   padding: 32px 0 72px;

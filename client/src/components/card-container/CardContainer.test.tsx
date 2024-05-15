@@ -17,6 +17,6 @@ describe("CardContainer Tests", () => {
 
   test("should display loading state initially", () => {
     render(<CardContainer />);
-    expect(screen.getByRole("loading")).toBeInTheDocument();
+    expect(screen.getByRole("loader")).toBeInTheDocument();
   });
 });

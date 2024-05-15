@@ -1,7 +1,14 @@
 import { render as RtlRender } from "@testing-library/react";
-import { ReactElement } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+export const createQueryClientWrapper = () => {
+  const queryClient = generateQueryClient();
+  return ({ children }: PropsWithChildren) => (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};
 
 // make a function to generate a unique query client for eact test
 const generateQueryClient = () => {

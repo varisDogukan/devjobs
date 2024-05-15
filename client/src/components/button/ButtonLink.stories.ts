@@ -26,30 +26,34 @@ export const Button: Story = {
 
 export const IconButton: Story = {
   args: {
+    size: "custom",
     type: "button",
+    formType: "submit",
     variant: "icon",
-    size: "full",
-    width: "max-contanet",
+    icontype: "magnify",
+    width: "max-content",
   },
 };
 
 export const Link: Story = {
   args: {
-    children: "Button",
     type: "link",
-    variant: "normal",
-    width: "141px",
     size: "custom",
+    width: "141px",
+    variant: "normal",
+    url: "#",
+    children: "Link Button",
   },
 };
 
 export const LinkTheme: Story = {
   args: {
-    children: "Button",
     type: "link",
-    variant: "normal",
+    size: "full",
     width: "141px",
+    variant: "normal",
+    url: "#",
     theme: true,
-    size: "custom",
+    children: "Theme Link Button",
   },
 };

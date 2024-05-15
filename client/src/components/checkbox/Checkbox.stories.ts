@@ -18,14 +18,6 @@ export const Checkbox: Story = {
   args: {
     children: "Checkbox",
     id: "checkbox",
-    checked: false,
-  },
-};
-
-export const ChexboxChecked: Story = {
-  args: {
-    children: "Checkbox Checked",
-    id: "checkbox",
-    checked: true,
+    name: "checkbox",
   },
 };

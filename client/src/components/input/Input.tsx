@@ -17,17 +17,17 @@ export default function Input({ icon, ...delegate }: InputProps) {
   };
 
   return (
-    <InputWrapper role={delegate.name as string}>
+    <Wrapper role={delegate.name as string}>
       {checkIcon()}
       <input type='text' {...delegate} />
-    </InputWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const InputWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;

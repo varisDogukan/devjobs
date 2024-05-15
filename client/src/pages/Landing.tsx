@@ -5,11 +5,11 @@ import CardContainer from "@/components/card-container/CardContainer";
 
 export default function Landing() {
   return (
-    <LandingWrapper className='container'>
+    <Wrapper className='container'>
       <Filter />
       <CardContainer />
-    </LandingWrapper>
+    </Wrapper>
   );
 }
 
-const LandingWrapper = styled.div``;
+const Wrapper = styled.div``;

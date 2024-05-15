@@ -10,7 +10,7 @@ type ModalType = {
 
 export default function Modal({ modalRef }: ModalType) {
   return (
-    <ModalWrapper>
+    <Wrapper>
       <div className='modal-container' ref={modalRef}>
         <Input
           name='location'
@@ -33,14 +33,14 @@ export default function Modal({ modalRef }: ModalType) {
           </ButtonLink>
         </div>
       </div>
-    </ModalWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const ModalWrapper = styled.div`
+const Wrapper = styled.div`
   position: fixed;
   display: grid;
   place-content: center;

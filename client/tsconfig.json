@@ -9,6 +9,8 @@
     "paths": {
       "@/*": ["src/*"]
     },
+    "allowJs": true,
+    "esModuleInterop": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
@@ -20,6 +22,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "settings"],
+  "include": ["src/**/*", "settings"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

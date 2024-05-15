@@ -3,26 +3,26 @@ import { createGlobalStyle } from "styled-components";
 
 export const theme = {
   dark: {
-    primaryColor: "#9DAEC2",
-    primaryBg: "#121721",
-    secondaryColor: "#FFFFFF",
-    secondaryBg: "#19202D",
-    tertiaryColor: "#FFFFFF",
-    buttonThemeBg: "#303642",
-    buttonThemeBgHover: "#696E76",
-    checkboxThemeBg: "#303742",
-    lineBg: "#2A3442",
+    primaryColor: "rgb(157, 174, 194)",
+    primaryBg: "rgb(18, 23, 33)",
+    secondaryColor: "rgb(255, 255, 255)",
+    secondaryBg: "rgb(25, 32, 45)",
+    tertiaryColor: "rgb(255, 255, 255)",
+    buttonThemeBg: "rgb(48, 54, 66)",
+    buttonThemeBgHover: "rgb(105, 110, 118)",
+    checkboxThemeBg: "rgb(48, 55, 66)",
+    lineBg: "rgb(42, 52, 66)",
   },
   light: {
-    primaryColor: "#6E8098",
-    primaryBg: "#F4F6F8",
-    secondaryColor: "#19202D",
-    secondaryBg: "#FFFFFF",
-    tertiaryColor: "#5964E0",
-    buttonThemeBg: "#EFF0FC",
-    buttonThemeBgHover: "#C5C9F4",
-    checkboxThemeBg: "#E8E8EA",
-    lineBg: "#e2e6ea",
+    primaryColor: "rgb(110, 128, 152)",
+    primaryBg: "rgb(244, 246, 248)",
+    secondaryColor: "rgb(25, 32, 45)",
+    secondaryBg: "rgb(255, 255, 255)",
+    tertiaryColor: "rgb(89, 100, 224)",
+    buttonThemeBg: "rgb(239, 240, 252)",
+    buttonThemeBgHover: "rgb(197, 201, 244)",
+    checkboxThemeBg: "rgb(232, 232, 234)",
+    lineBg: "rgb(226, 230, 234)",
   },
 };
 
@@ -37,11 +37,11 @@ const GlobalStyles = createGlobalStyle`
     --button-theme-bg-hover: ${({ theme }) => theme.buttonThemeBgHover};
     --line-bg:${({ theme }) => theme.lineBg};
 
-    --white: #FFFFFF;
-    --violet-100: #D5D8F7;
-    --violet-300: #939BF4;
-    --violet-700: #5964E0;
-    --grey: #6E8098;
+    --white: rgb(255, 255, 255);
+    --violet-100: rgb(213, 216, 247);
+    --violet-300: rgb(147, 155, 244);
+    --violet-700: rgb(89, 100, 224);
+    --grey: rgb(110, 128, 152);
 
     --checkbox-theme-bg: ${({ theme }) => theme.checkboxThemeBg};;
     --checkbox-hover: var(--violet-100);

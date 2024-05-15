@@ -10,20 +10,20 @@ interface CheckboxProps {
 
 export default function Checkbox({ children, ...delegate }: CheckboxProps) {
   return (
-    <CheckboxWrapper htmlFor={delegate.id} role='fullTimeOnly'>
+    <Wrapper htmlFor={delegate.id} role='fullTimeOnly'>
       <input type='checkbox' {...delegate} />
       <span>
         <img src={icon} alt='' />
       </span>
       <p>{children}</p>
-    </CheckboxWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const CheckboxWrapper = styled.label`
+const Wrapper = styled.label`
   display: flex;
   align-items: center;
   gap: 16px;

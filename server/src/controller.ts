@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, json } from "express";
 
 import { filterJobs } from "./helper";
 import { JobType } from "./types";
@@ -10,7 +10,8 @@ export function getJobs(req: Request, res: Response) {
   const fullTimeOnly = req.query.fullTimeOnly === "true";
   const count = req.query.count as string;
 
-  console.log(req.query);
+  if (!search && !count && !location && !fullTimeOnly)
+    return res.json(jobsData);
 
   const filteredJobs = filterJobs(
     jobsData,
@@ -24,9 +25,9 @@ export function getJobs(req: Request, res: Response) {
 }
 
 export function getSingleJob(req: Request, res: Response) {
-  const jobId = req.params.id as string;
+  const jobId = Number(req.params.id);
 
-  const singleJob = jobsData.filter((job: JobType) => job.id === Number(jobId));
+  const singleJob = jobsData.find((job: JobType) => job.id === jobId);
 
   res.json(singleJob);
 }

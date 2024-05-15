@@ -1,19 +1,16 @@
 import { Dispatch, SetStateAction, useRef } from "react";
-import useOutsideClick from "@/helpers/useOutsideClick";
+import useOutsideClick from "@/hooks/useOutsideClick";
 import ButtonLink from "../button/ButtonLink";
 import Input from "../input/Input";
 import styled from "styled-components";
-import Modal from "./ModalFilter";
+import Modal from "./Modal";
 
-type MobileContainerType = {
+type MobileProps = {
   showModal: boolean;
   setShowModal: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function MobileContainer({
-  showModal,
-  setShowModal,
-}: MobileContainerType) {
+export default function Mobile({ showModal, setShowModal }: MobileProps) {
   const ref = useRef(null);
 
   const callback = () => {
@@ -23,7 +20,7 @@ export default function MobileContainer({
   useOutsideClick({ ref, callback });
 
   return (
-    <MobileContainerWrapper>
+    <Wrapper>
       <Input
         name='search'
         placeholder='Filter by title, companies, expertise…'
@@ -50,14 +47,14 @@ export default function MobileContainer({
       />
 
       {showModal && <Modal modalRef={ref} />}
-    </MobileContainerWrapper>
+    </Wrapper>
   );
 }
 
 /*
 =========== STYLES =================
 */
-const MobileContainerWrapper = styled.div`
+const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;

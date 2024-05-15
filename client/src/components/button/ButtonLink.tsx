@@ -6,6 +6,7 @@ import mediaQuery from "@/styles/mediaQuery";
 import magnifyIcon from "../../assets/magnifying_glass.svg";
 import filterDarkIcon from "../../assets/filter-black.svg";
 import filterLightIcon from "../../assets/filter-light.svg";
+import VisuallyHidden from "../visually-hidden/VisuallyHidden";
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -65,7 +66,8 @@ export default function ButtonLink({
           $icontype={icontype}
           onClick={onClick}
         >
-          <img src={magnifyIcon} />
+          <VisuallyHidden>Search Button</VisuallyHidden>
+          <img src={magnifyIcon} alt='search icon' />
         </ButtonWrapper>
       ) : (
         <ButtonWrapper
@@ -76,6 +78,7 @@ export default function ButtonLink({
           role='filter'
           onClick={onClick}
         >
+          <VisuallyHidden>Filter Button for Modal</VisuallyHidden>
           <img src={checkTheme(themeTitle)} />
         </ButtonWrapper>
       );
@@ -97,7 +100,7 @@ export default function ButtonLink({
 /*
 =========== STYLES =================
 */
-type WrapperProps = {
+type StyleType = {
   width: string;
   size: "full" | "custom";
   theme: boolean;
@@ -117,7 +120,7 @@ const sharedStyle = css`
   }
 `;
 
-const ButtonWrapper = styled.button<WrapperProps>`
+const ButtonWrapper = styled.button<StyleType>`
   ${sharedStyle}
 
   background-color: ${({ $icontype }) =>
@@ -134,11 +137,12 @@ const ButtonWrapper = styled.button<WrapperProps>`
   }
 `;
 
-const LinkWrapper = styled(Link)<WrapperProps>`
+const LinkWrapper = styled(Link)<StyleType>`
   ${sharedStyle}
 
-  background: var(${({ theme }) =>
-    theme === true ? "--button-theme-bg" : "--violet-700"});
+  background: var(
+    ${({ theme }) => (theme === true ? "--button-theme-bg" : "--violet-700")}
+  );
   color: var(
     ${({ theme }) => (theme === true ? "--tertiary-color" : "--white")}
   );
@@ -150,7 +154,7 @@ const LinkWrapper = styled(Link)<WrapperProps>`
     );
   }
 
-  @media ${mediaQuery.mobile} {
+  @media ${mediaQuery.tablet} {
     width: ${({ size, width }) => (size === "full" ? "100%" : width)};
   }
 `;

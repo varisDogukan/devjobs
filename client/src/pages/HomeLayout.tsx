@@ -4,11 +4,11 @@ import styled from "styled-components";
 
 export default function HomeLayout() {
   return (
-    <HomeLayoutWrapper>
+    <Wrapper>
       <Header />
       <Outlet />
-    </HomeLayoutWrapper>
+    </Wrapper>
   );
 }
 
-const HomeLayoutWrapper = styled.main``;
+const Wrapper = styled.main``;

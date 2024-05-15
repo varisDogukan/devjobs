@@ -1,5 +1,6 @@
 import Error from "@/components/error/Error";
 import { Landing, HomeLayout } from "@/pages";
+import DevJobDetail from "@/pages/DevJobDetail";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/devjobs/:id",
-        element: <div>Job Detail Page</div>,
+        element: <DevJobDetail />,
       },
     ],
   },
