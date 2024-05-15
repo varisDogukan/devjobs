@@ -8,6 +8,7 @@ import { JobType } from "@/types";
 import mediaQuery from "@/styles/mediaQuery";
 import ButtonLink from "../button/ButtonLink";
 import Loader from "../loader/Loader";
+import Error from "../error/Error";
 
 export default function CardContainer() {
   const { formInfo } = useStore();
@@ -17,7 +18,7 @@ export default function CardContainer() {
 
   const checkData = () => {
     if (isLoading) return <Loader />;
-    if (isError) return <h1 role='error'>Error</h1>;
+    if (isError) return <Error />;
 
     return data
       ?.slice(0, count)

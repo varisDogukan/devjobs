@@ -7,7 +7,13 @@ interface WrapperProviderProps {
 }
 
 export default function WrapperProvider({ children }: WrapperProviderProps) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 1000 * 60 * 5,
+      },
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>

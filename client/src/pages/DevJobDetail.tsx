@@ -1,17 +1,20 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 
 import { Content, Footer, Header } from "@/components/devjob-detail";
 import styled from "styled-components";
 import { useGetSingleDevJob } from "@/hooks/useDevJobs";
 import Container from "@/components/devjob-detail/Container";
+import Error from "@/components/error/Error";
+import Loader from "@/components/loader/Loader";
 
 export default function DevJobDetail() {
   const params = useParams();
 
   const { data, isLoading, isError } = useGetSingleDevJob(params.id!);
 
-  if (isLoading) return <h1 role='loading'>Loading</h1>;
-  if (isError) return <h1 role='error'>Error</h1>;
+  if (isLoading) return <Loader />;
+  if (isError) return <Error />;
+  if (!data) return <Navigate to='/' />;
 
   return (
     <Wrapper>
